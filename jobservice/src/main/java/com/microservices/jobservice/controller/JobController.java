@@ -1,5 +1,6 @@
 package com.microservices.jobservice.controller;
 
+import com.microservices.jobservice.dto.JobWithCompanyDTO;
 import com.microservices.jobservice.model.Job;
 import com.microservices.jobservice.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class JobController {
     @Autowired
     private JobService jobService;
     @GetMapping("/getJobs")
-    public List<Job> getJobs(){
+    public List<JobWithCompanyDTO> getJobs(){
         return jobService.getJobs();
     }
     @PostMapping("/createJob")
@@ -23,7 +24,7 @@ public class JobController {
     }
 
     @GetMapping("/getById/{jobId}")
-    public Job getById(@PathVariable Long jobId){
+    public JobWithCompanyDTO getById(@PathVariable Long jobId){
         return jobService.getJobById(jobId);
     }
     @PutMapping("/updateJob")
